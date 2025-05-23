@@ -3,6 +3,9 @@
 Detta är ett REST API byggt med **Node.js**, **Express**, **MongoDB** och **JWT**, som möjliggör **registrering av användare**, **inloggning**, och **åtkomst till skyddad data** med hjälp av **JSON Web Tokens (JWT)**.
 
 ---
+## Länkar till publicering
+
+---
 
 ## Databas
 
@@ -16,6 +19,10 @@ API:et använder en **MongoDB-databas** (hostad på Atlas) där användarkonton 
   "account_created": "Date"
 }
 ```
+Lösenorden lagras aldrig i klartext, utan krypteras innan de sparas.
+
+-----
+
 ## Användning av API-endpoints
 | Metod | URL                  | Body                   | Headers                         | Beskrivning                                      |
 | ----- | -------------------- | ---------------------- | ------------------------------- | ------------------------------------------------ |
