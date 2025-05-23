@@ -5,6 +5,8 @@ Detta är ett REST API byggt med **Node.js**, **Express**, **MongoDB** och **JWT
 ---
 ## Länkar till publicering
 
+- [Render-länk](https://backend-moment4-1-k1rb.onrender.com/)
+- [Frontend-länk]
 ---
 
 ## Databas
