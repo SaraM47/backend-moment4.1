@@ -19,4 +19,17 @@ router.get('/movies', verifyToken, (req, res) => {
   ]);
 });
 
+// Protected route: Accept posted favorite movies
+router.post('/movies', verifyToken, (req, res) => {
+  const { title, genre } = req.body;
+
+  if (!title || !genre) {
+    return res.status(400).json({ error: 'Titel och genre krävs' });
+  }
+
+  console.log('Mottagen film:', title, genre);
+  res.status(201).json({ message: 'Film tillagd!' });
+});
+
+
 module.exports = router;
