@@ -6,20 +6,22 @@ const express = require('express');
 const verifyToken = require('../middleware/verifyToken');
 const router = express.Router();
 
+const movies = [
+  { title: "Zootopia", genre: "Animated" },
+  { title: "The Kissing Booth", genre: "Romantic" },
+  { title: "Rush Hour", genre: "Action" }
+];
+
 router.get('/', verifyToken, (req, res) => {
   res.json({ message: 'Du är inloggad och har åtkomst till skyddad data.' });
 });
 
-// Protected route: Return static favorite movies
+// GET - return the current list of static favorite movies
 router.get('/movies', verifyToken, (req, res) => {
-  res.json([
-    { title: "Zootopia", genre: "Animated" },
-    { title: "The Kissing Booth", genre: "Romantic" },
-    { title: "Rush Hour", genre: "Action" }
-  ]);
+  res.json(movies);
 });
 
-// Protected route: Accept posted favorite movies
+// POST - add new movie to memory list
 router.post('/movies', verifyToken, (req, res) => {
   const { title, genre } = req.body;
 
@@ -27,9 +29,8 @@ router.post('/movies', verifyToken, (req, res) => {
     return res.status(400).json({ error: 'Titel och genre krävs' });
   }
 
-  console.log('Mottagen film:', title, genre);
+  movies.push({ title, genre });
   res.status(201).json({ message: 'Film tillagd!' });
 });
-
 
 module.exports = router;
